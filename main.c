@@ -23,15 +23,13 @@ int main(int argc, char* argv[]) {
         if(cnt != 4 || error) {
             printf("ERROR: Wrong format of string\nExpected x.x.x.x, where 0 <= x <= 255\n");
         }else {
-            printf("OK");
             for(int i = 0; i < 4; i ++)
                 mask[i] = 255;
             while(subnet > -1) {
-                //printf("%d", 193 & 254);
-                for(int i = 0 ; i < 4; i ++) {
-                    printf("%d ", *(mask+i));
+                for(int i = 0; i < 3; i ++) {
+                    printf("%d.", arr[i]&mask[i]);
                 }
-                printf("\n");
+                printf("%d/%d\n", arr[3]&mask[3], subnet);
                 mask[ptr] = (mask[ptr] & ~(1<<(8-subnet+ptr*8)));
                 if(*(mask+ptr) == 0)
                     ptr --;
